@@ -141,10 +141,15 @@ class BaileysProvider extends ProviderClass {
                 if (messageCtx.message?.documentMessage) {
                     payload = { ...payload, body: generateRefprovider('_event_document_') }
                 }
-
+                
                 //Detectar voice note
                 if (messageCtx.message?.audioMessage) {
-                    payload = { ...payload, body: generateRefprovider('_event_voice_note_') }
+                    payload = {
+                        ...messageCtx,
+                        body: 'Aklsadjflksdjfklsdjf',
+                        from: messageCtx?.key?.remoteJid,
+                    };
+                    //payload = { ...payload, body: generateRefprovider('_event_voice_note_') };
                 }
 
                 if (payload.from === 'status@broadcast') return
